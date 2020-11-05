@@ -1,10 +1,10 @@
 const router = require('express').Router()
 
 
-
+require('dotenv')
 ///Hash and Encryption
 const bcrypt = require('bcrypt')
-
+const jwt = require('jsonwebtoken')
 
 //Database Models
 const User = require('../../models/user')
@@ -31,13 +31,14 @@ router.post('/signup/user', async (req, res) => {
 
         await saveData.save()
 
-
-        var userCreated = await User.findOne({ 'email': req.body.email }, { _id: 1, password: 1 })
+        //After account creation
+        var userCreated = await User.findOne({ 'email': req.body.email }, { _id: 1})
         var token = jwt.sign({
             id: userCreated._id,
             type: 'user'
         }, process.env.JWT_SECRET)
-
+       
+        
         await User.updateOne({ '_id': userCreated._id }, {
             $push: { jwt: token }
         })
