@@ -72,12 +72,15 @@ if(type === "admin"){
 
 ///Logout
 
-router.post('/logout/user',async(req,res)=>{
-const {id,token} = req.userData
+router.post('/logout',async(req,res)=>{
+const {id,token,type} = req.userData
 
-await User.updateOne({_id:id},{
-    $pull : {jwt : token}
-})
+if(type === 'user'){
+
+    await User.updateOne({_id:id},{
+        $pull : {jwt : token}
+    })
+}
 
 res.send('updated')
 

@@ -31,7 +31,18 @@ router.post('/signup/user', async (req, res) => {
 
         await saveData.save()
 
-        return res.status(200).send('Account Created')
+
+        var userCreated = await User.findOne({ 'email': req.body.email }, { _id: 1, password: 1 })
+        var token = jwt.sign({
+            id: userCreated._id,
+            type: 'user'
+        }, process.env.JWT_SECRET)
+
+        await User.updateOne({ '_id': userCreated._id }, {
+            $push: { jwt: token }
+        })
+
+        return res.status(200).send({ token: token })
 
     } catch (e) {
 
