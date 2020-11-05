@@ -19,7 +19,8 @@ name:{
 },
 
 avatar:{
-    type:String
+    type:String,
+    default:"none"
 },
 
 workoutType:{
