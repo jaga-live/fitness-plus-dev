@@ -8,6 +8,9 @@ const date = require("../../utility/date");
 const User = require("../../models/user");
 const Work = require("../../models/work");
 
+
+
+
 ////View all the activity count
 
 router.post("/viewactivity", verifyAuth, async (req, res) => {
@@ -34,6 +37,7 @@ router.post("/viewactivity", verifyAuth, async (req, res) => {
 
   return res.status(200).send(data);
 });
+
 
 
 
