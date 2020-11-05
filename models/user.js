@@ -20,7 +20,7 @@ name:{
 
 avatar:{
     type:String,
-    default:"none"
+    default: null
 },
 
 workoutType:{
