@@ -11,7 +11,7 @@ const app = express()
 //Configure express application
 
 app.use(express.json({limit:"2mb"}))
-
+app.use(cors())
 
 
 

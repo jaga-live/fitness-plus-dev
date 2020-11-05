@@ -15,6 +15,7 @@ module.exports = async (req, res, next) => {
     var check = jwt.verify(token, process.env.JWT_SECRET);
 
     req.userData = check;
+    req.userData.token = token
 
     next();
   } catch {
