@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 //Middleware
-
+var verifyAuth = require('../auth/verify.auth')
 
 //Database Model
 const User = require('../models/user')
@@ -51,7 +51,7 @@ router.post('/login', async (req, res) => {
 
 ///Check Auth Status
 
-router.post('/checkauthstatus', async (req,res)=>{
+router.post('/checkauthstatus',verifyAuth, async (req,res)=>{
 const {id,type} = req.userData
 
 if(type === "user"){
@@ -72,7 +72,7 @@ if(type === "admin"){
 
 ///Logout
 
-router.post('/logout',async(req,res)=>{
+router.post('/logout',verifyAuth,async(req,res)=>{
 const {id,token,type} = req.userData
 
 if(type === 'user'){

@@ -10,7 +10,8 @@ const jwt = require('jsonwebtoken')
 const User = require('../../models/user')
 
 
-
+//Middleware
+var verifyAuth = require('../../auth/verify.auth')
 
 
 ////Signup for Users
@@ -59,7 +60,7 @@ router.post('/signup/user', async (req, res) => {
 
 ////User Profile 
 
-router.post('/userprofile',async(req,res)=>{
+router.post('/userprofile', verifyAuth,async(req,res)=>{
 const {id} = req.userData
 
 const user = await User.findOne({_id:id},{name:1,avatar:1,email:1})
