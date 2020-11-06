@@ -66,6 +66,24 @@ const {id} = req.userData
 const user = await User.findOne({_id:id},{name:1,avatar:1,email:1})
 return res.status(200).send(user)
 
+})
+
+
+//Upadte userprofile
+
+router.post('/updateuserprofile',verifyAuth,async(req,res)=>{
+const {id} = req.userData
+
+try {
+    await User.updateOne({_id:id},{
+        $set: req.body
+    })
+    res.send('updated')
+    
+} catch (error) {
+    res.status(400)
+}
+
 
 
 })
