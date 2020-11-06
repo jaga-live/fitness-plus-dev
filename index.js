@@ -30,8 +30,10 @@ app.use([authRoute])
 ///Usres
 const userRegister = require('./routes/users/user.register')
 const userActivity = require('./routes/users/user.activity')
+const userFriend = require('./routes/users/user.friend')
 
-app.use([userRegister,userActivity])
+
+app.use([userRegister,userActivity,userFriend])
 
 
 

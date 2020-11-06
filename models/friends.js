@@ -5,6 +5,7 @@ const friendSchema = new mongoose.Schema({
 token: String,
 friendName: String,
 friendId : String,
+friendMail: String,
 status : {
     type : String,
     default : "pending"

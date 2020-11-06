@@ -55,7 +55,7 @@ router.post('/checkauthstatus', async (req,res)=>{
 const {id,type} = req.userData
 
 if(type === "user"){
-var user = await User.findOne({'_id':id},{name,email,avatar})
+var user = await User.findOne({'_id':id},{name:1,email:1,avatar:1})
 return res.send(user)
 }
 
