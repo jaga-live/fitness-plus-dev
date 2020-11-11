@@ -3,6 +3,7 @@ const router = require("express").Router();
 ////Midlleware
 const verifyAuth = require("../../auth/verify.auth");
 const date = require("../../utility/date");
+const func = require('../../utility/func')
 
 ///Database Model
 const User = require("../../models/user");
@@ -57,21 +58,31 @@ router.post("/updateactivity", verifyAuth, async (req, res) => {
     }
   );
 
-  let reset = function (data) {
-    Object.keys(data).forEach(function (key) {
-      data[key] = 0;
-    });
-    return spy;
-  };
+ 
+var userData = req.body.workouts
+
+userData.map((element,index)=>{
+
+userData[index].count = 0
+
+})
+
 
   await User.updateOne(
     { _id: id },
     {
-      workoutType: reset(req.body.workouts),
+      workoutType: userData,
     }
   );
 
   return res.status(200).send("Updated");
 });
+
+
+
+
+
+
+
 
 module.exports = router;
