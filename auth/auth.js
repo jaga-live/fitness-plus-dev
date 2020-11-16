@@ -18,7 +18,7 @@ const User = require('../models/user')
 router.post('/login', async (req, res) => {
 
     try {
-        var user = await User.findOne({ 'email': req.body.email }, { _id: 1, password: 1 })
+        var user = await User.findOne({ 'email': req.body.email }, { _id: 1, password: 1,name:1 })
         if (!user) return res.status(403).send('Invalid Email Or Password')
 
         if (!bcrypt.compareSync(req.body.password, user.password)) {
@@ -28,6 +28,7 @@ router.post('/login', async (req, res) => {
 
         var token = jwt.sign({
             id: user._id,
+            name : user.name,
             type: 'user'
         }, process.env.JWT_SECRET)
 

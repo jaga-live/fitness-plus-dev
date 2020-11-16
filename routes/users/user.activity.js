@@ -18,12 +18,16 @@ router.post("/viewactivity", verifyAuth, async (req, res) => {
   const { id } = req.userData;
   const { time } = req.body;
 
+
   var work = await Work.findOne({
     userId: id,
     date: await date.timestampToDate(time),
   });
 
+
   if (work !== null) return res.status(200).send(work);
+
+
 
   ////if no actiivity logged for that day
   var workType = await User.findOne({ _id: id }, { workoutType: 1 });
@@ -31,6 +35,8 @@ router.post("/viewactivity", verifyAuth, async (req, res) => {
   var data = {
     userId: id,
     workouts: workType.workoutType,
+    time: time,
+    date: date.timestampToDate(time)
   };
 
   var saveData = await Work(data);
@@ -43,12 +49,15 @@ router.post("/viewactivity", verifyAuth, async (req, res) => {
 
 
 
+
 ////Update activity in home screen
 router.post("/updateactivity", verifyAuth, async (req, res) => {
   const { id } = req.userData;
   const {time}= req.body
 
-  await Work.updateOne(
+  try{
+    
+    await Work.updateOne(
     {
       userId: id,
       date: date.timestampToDate(time),
@@ -76,6 +85,12 @@ userData[index].count = 0
   );
 
   return res.status(200).send("Updated");
+
+}catch{
+  return res.status(400).send("Something went wrong")
+}
+
+
 });
 
 

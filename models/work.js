@@ -17,11 +17,10 @@ const workSchema = new mongoose.Schema({
 
     time : {
         type: Number,
-        default : Date.now()
+        
     },
     date:{
-        type: String,
-        default : date.timestampToDate(Date.now())
+        
     }
 
 
