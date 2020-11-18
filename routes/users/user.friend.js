@@ -142,7 +142,7 @@ res.send(200).send("Updated")
 
 ////Requests sent///
 
-router.post('/requestsent',async(req,res)=>{
+router.post('/request_sent',verifyAuth,async(req,res)=>{
 const {id} = req.userData
 
 
@@ -156,7 +156,15 @@ res.status(200).send(data)
 
 
 ////Incoming friend requests////
+router.post('/request_received',verifyAuth,async(req,res)=>{
+const {id} = req.userData
 
+
+var data = await FriendReq.findOne({friendId : id, status : "pending"})
+
+res.status(200).send(data)
+
+})
 
 
 

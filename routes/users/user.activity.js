@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-////Midlleware
+////Middleware
 const verifyAuth = require("../../auth/verify.auth");
 const date = require("../../utility/date");
 const func = require('../../utility/func')
@@ -55,7 +55,7 @@ router.post("/updateactivity", verifyAuth, async (req, res) => {
   const { id } = req.userData;
   const {time}= req.body
 
-  try{
+
     
     await Work.updateOne(
     {
@@ -86,9 +86,7 @@ userData[index].count = 0
 
   return res.status(200).send("Updated");
 
-}catch{
-  return res.status(400).send("Something went wrong")
-}
+
 
 
 });
