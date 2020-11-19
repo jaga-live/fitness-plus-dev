@@ -21,9 +21,11 @@ var data = []
 
 var challenge = await Challenge.find({'date': req.body.date})
 
-var activity = await Work.findOne({_id:id,date : req.body.date})
+var activity = await Work.findOne({userId:id,date : req.body.date})
 
-var {workouts} = activity
+
+
+var workouts = activity !== null ? activity.workouts : []
 
 
 for (let index = 0; index < challenge.length; index++) {
@@ -42,6 +44,8 @@ for (let index = 0; index < challenge.length; index++) {
     }
     
 }
+
+res.send(data)
 
    
 })

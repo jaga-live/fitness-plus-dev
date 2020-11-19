@@ -29,9 +29,9 @@ const userSchema = new mongoose.Schema({
   workoutType: {
     type: Array,
     default: [
-      { name: "pullups", count: 0 },
-      { name: "pushups", count: 0 },
-      { name: "squats", count: 0 },
+      { name: "Pull Ups", count: 0 },
+      { name: "Push Ups", count: 0 },
+      { name: "Squats", count: 0 },
     ],
   },
 
