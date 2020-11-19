@@ -73,7 +73,8 @@ router.post("/login", async (req, res) => {
       );
   
       return res.status(200).send({ token: token,avatar : user.avatar,type:"admin" });
-    } catch {
+    } 
+    catch {
       return res.status(400).send("Bad Request");
     }
   });
@@ -96,7 +97,13 @@ router.post("/checkauthstatus", verifyAuth, async (req, res) => {
       { _id: id },
       { name: 1, email: 1, avatar: 1 }
     );
-    return res.send(user);
+
+    var data ={
+      name : user.name,
+      email : user.email,
+      avatar : user.avatar
+    }
+    return res.send(data);
 
   }
 
@@ -105,7 +112,11 @@ router.post("/checkauthstatus", verifyAuth, async (req, res) => {
       _id:1
     })
 
-    return res.send(admin)
+    var data = {
+      _id : admin._id,
+      type: "admin"
+    }
+    return res.send(data)
   }
 });
 

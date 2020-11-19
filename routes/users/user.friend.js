@@ -39,7 +39,11 @@ const {id} = req.userData
 const {text} = req.body
 
 var data = await User.find({
-    $text : text,
+    $text : {
+        $search: text,
+        $caseSensitive : false,
+        
+    },
     
 })
 
