@@ -19,7 +19,7 @@ router.post("/login", async (req, res) => {
     try {
       var user = await User.findOne(
         { email: req.body.email },
-        { _id: 1, password: 1, name: 1 }
+        { _id: 1, password: 1, name: 1,avatar : 1 }
       );
 
 
@@ -74,7 +74,7 @@ router.post("/login", async (req, res) => {
         }
       );
   
-      return res.status(200).send({ token: token });
+      return res.status(200).send({ token: token,avatar : user.avatar });
     } catch {
       return res.status(400).send("Bad Request");
     }
