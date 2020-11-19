@@ -46,7 +46,7 @@ router.post("/login", async (req, res) => {
                   $push: { jwt: tkn },
                 }
               );
-              return res.status(200).send({ token: tkn });
+              return res.status(200).send({ token: tkn,type:"admin" });
 
       } 
 
@@ -72,7 +72,7 @@ router.post("/login", async (req, res) => {
         }
       );
   
-      return res.status(200).send({ token: token,avatar : user.avatar });
+      return res.status(200).send({ token: token,avatar : user.avatar,type:"admin" });
     } catch {
       return res.status(400).send("Bad Request");
     }

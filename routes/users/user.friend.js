@@ -36,8 +36,14 @@ res.status(200).send(data)
 
 router.post('/searchpeople',async(req,res)=>{
 const {id} = req.userData
+const {text} = req.body
 
+var data = await User.find({
+    $text : text,
+    
+})
 
+return res.send(data)
 
 })
 
