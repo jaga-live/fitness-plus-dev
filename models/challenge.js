@@ -5,8 +5,6 @@ var challengeSchema = new mongoose.Schema({
 
 date : String,
 
-valid : Number,
-
 workoutName : String,
 
 count : Number

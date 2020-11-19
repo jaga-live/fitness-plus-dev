@@ -17,7 +17,7 @@ const Challenge = require('../../models/challenge')
 router.post('/viewchallenge', verifyAuth ,async (req,res)=>{
 const {id} = req.userData
 const {time} = req.body
-
+var data = []
 var challenge = await Challenge.find({'date': req.body.date})
 
 var activity = await Work.findOne({_id:id,date : req.body.date})
