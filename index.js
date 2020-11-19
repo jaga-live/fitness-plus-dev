@@ -31,9 +31,9 @@ app.use([authRoute])
 const userRegister = require('./routes/users/user.register')
 const userActivity = require('./routes/users/user.activity')
 const userFriend = require('./routes/users/user.friend')
+const userChallenge = require('./routes/users/user.challenge')
 
-
-app.use([userRegister,userActivity,userFriend])
+app.use([userRegister,userActivity,userFriend,userChallenge])
 
 
 
