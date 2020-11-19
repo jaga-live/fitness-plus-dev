@@ -25,7 +25,7 @@ const workSchema = new mongoose.Schema({
         
     },
     date:{
-        
+        type:String
     }
 
 

@@ -72,7 +72,7 @@ router.post("/login", async (req, res) => {
         }
       );
   
-      return res.status(200).send({ token: token,avatar : user.avatar,type:"admin" });
+      return res.status(200).send({ token: token,avatar : user.avatar,type:"user" });
     } 
     catch {
       return res.status(400).send("Bad Request");
