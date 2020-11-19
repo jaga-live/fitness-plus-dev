@@ -16,7 +16,7 @@ const Admin = require('../models/admin')
 
 
 router.post("/login", async (req, res) => {
-    try {
+    
       var user = await User.findOne(
         { email: req.body.email },
         { _id: 1, password: 1, name: 1,avatar : 1 }
@@ -27,6 +27,8 @@ router.post("/login", async (req, res) => {
       if (!user) {
 
             var admin = await Admin.findOne({'email':req.body.email},{_id: 1, password: 1})
+
+            if(!admin) return res.status(403).send("Invalid Username or Password");
 
             if (!bcrypt.compareSync(req.body.password, admin.password)) {
                 return res.status(403).send("Invalid Username or Password");
@@ -73,10 +75,8 @@ router.post("/login", async (req, res) => {
       );
   
       return res.status(200).send({ token: token,avatar : user.avatar,type:"user" });
-    } 
-    catch {
-      return res.status(400).send("Bad Request");
-    }
+    
+   
   });
 
 
