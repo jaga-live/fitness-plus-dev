@@ -9,6 +9,8 @@ valid : Number,
 
 workoutName : String,
 
+count : Number
+
 
 })
 
