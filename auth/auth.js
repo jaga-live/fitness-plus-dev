@@ -49,7 +49,7 @@ router.post("/login", async (req, res) => {
               return res.status(200).send({ token: tkn });
 
       } else {
-        return res.status(403).send("Invalid Email Or Password");
+         res.status(403).send("Invalid Email Or Password");
       }
 
 
@@ -93,17 +93,26 @@ router.post("/checkauthstatus", verifyAuth, async (req, res) => {
   const { id, type } = req.userData;
 
   if (type === "user") {
+
     var user = await User.findOne(
       { _id: id },
       { name: 1, email: 1, avatar: 1 }
     );
     return res.send(user);
+
   }
 
   if (type === "admin") {
-    return 0;
+    var admin = await Admin.findOne({_id: id},{
+      _id:1
+    })
+
+    return res.send(admin)
   }
 });
+
+
+
 
 ///Logout
 
