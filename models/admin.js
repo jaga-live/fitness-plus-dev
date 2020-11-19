@@ -9,6 +9,10 @@ email: String,
 password:{
     type: String,
     trim :true
+},
+
+jwt:{
+    type :Array
 }
 
 

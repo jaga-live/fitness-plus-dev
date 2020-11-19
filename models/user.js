@@ -21,6 +21,11 @@ const userSchema = new mongoose.Schema({
     default: null,
   },
 
+  activityPoint: {
+    type:Number,
+    default : 0
+  },
+
   workoutType: {
     type: Array,
     default: [

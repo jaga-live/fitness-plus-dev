@@ -15,8 +15,13 @@ const workSchema = new mongoose.Schema({
         type: Object
     },
 
+    activityPoints:{
+        type:Number
+    },
+
     time : {
         type: Number,
+        default : 0
         
     },
     date:{

@@ -10,7 +10,7 @@ const app = express()
 
 //Configure express application
 
-app.use(express.json({limit:"2mb"}))
+app.use(express.json({limit:"5mb"}))
 app.use(cors())
 
 
@@ -27,7 +27,7 @@ const authRoute = require('./auth/auth')
 app.use([authRoute])
 
 
-///Usres
+///Users
 const userRegister = require('./routes/users/user.register')
 const userActivity = require('./routes/users/user.activity')
 const userFriend = require('./routes/users/user.friend')
@@ -37,6 +37,11 @@ app.use([userRegister,userActivity,userFriend])
 
 
 
+////Admin 
+const adminRoute = require('./routes/admin/admin.challenges')
+
+
+app.use([adminRoute])
 
 
 ////Starting Node Js Server
