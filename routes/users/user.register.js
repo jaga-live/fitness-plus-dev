@@ -92,5 +92,14 @@ try {
 
 
 
+const test = async()=>{
+
+//  await User.createIndexes({name: "text"})
+ var a = await User.find({$text:{$search: "jaga"}})
+console.log(a)
+}
+test()
+
+
 
 module.exports = router

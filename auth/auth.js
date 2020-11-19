@@ -48,9 +48,7 @@ router.post("/login", async (req, res) => {
               );
               return res.status(200).send({ token: tkn });
 
-      } else {
-         res.status(403).send("Invalid Email Or Password");
-      }
+      } 
 
 
   ///User
