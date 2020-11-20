@@ -1,5 +1,5 @@
 const router = require('express').Router()
-
+const cron = require('node-cron')
 
 ////Midlleware
 const verifyAuth = require("../../auth/verify.auth");
@@ -46,7 +46,8 @@ var data = await User.find({
     
 },
 {
-    name : 1
+    name : 1,
+    avatar : 1
 }
 )
 
@@ -178,6 +179,8 @@ var data = await FriendReq.findOne({friendId : id, status : "pending"})
 res.status(200).send(data)
 
 })
+
+
 
 
 

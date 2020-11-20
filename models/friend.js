@@ -4,8 +4,6 @@ const friendSchema = new mongoose.Schema({
 
 token: String,
 
-friendName: String,
-
 friendId : String
 
 
