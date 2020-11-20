@@ -75,7 +75,7 @@ var friend = await Friend.countDocuments({"token":id,"friendId":friendId})
 
 var incoming = await FriendReq.countDocuments({"token":friendId,"friendId":id})
 
-var outgoing = await FriendReq.countDocuments({"token":id,"friendId":friendId})
+var outgoing = await FriendReq.countDocuments({"token":id,"friendId":friendId,"status":"pending"})
 
 var data = {
     name: user.name,
