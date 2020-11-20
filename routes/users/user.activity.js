@@ -81,10 +81,11 @@ userData[index].count = 0
     { _id: id },
     {
       workoutType: userData,
+      $inc : {activityPoint : 2}
     }
   );
 
-  return res.status(200).send("Updated");
+   res.status(200).send("Updated");
 
 
 
