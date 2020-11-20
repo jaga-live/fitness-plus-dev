@@ -30,7 +30,7 @@ router.post("/viewactivity", verifyAuth, async (req, res) => {
 
 var temp = {
   activityPoint : activity.activityPoint,
-  workouts: work.workouts
+  workouts: work !== null ? work.workouts : []
 }
 
 
