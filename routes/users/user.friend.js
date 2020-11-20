@@ -197,9 +197,19 @@ router.post('/request_sent',verifyAuth,async(req,res)=>{
 const {id} = req.userData
 
 
-var data = await FriendReq.findOne({token : id, status : "pending"})
+var data = await FriendReq.find({token : id, status : "pending"})
+var token = []
 
-res.status(200).send(data)
+data.map((ele,index)=>{
+    token.push(data[index].friendId)
+})
+
+var users  =await User.find({_id: token},{
+    name: 1,
+    avatar : 1
+})
+
+res.status(200).send(users)
 
 
 })
@@ -211,9 +221,18 @@ router.post('/request_received',verifyAuth,async(req,res)=>{
 const {id} = req.userData
 
 
-var data = await FriendReq.findOne({friendId : id, status : "pending"})
+var data = await FriendReq.find({friendId : id, status : "pending"})
 
-res.status(200).send(data)
+data.map((ele,index)=>{
+    token.push(data[index].token)
+})
+
+var users  = await User.find({_id: token},{
+    name: 1,
+    avatar : 1
+})
+
+res.status(200).send(users)
 
 })
 
