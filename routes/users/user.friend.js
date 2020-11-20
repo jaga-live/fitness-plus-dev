@@ -165,7 +165,8 @@ await Friend.insertMany(data)
 
 return res.status(200).send('Updated')
 
-}catch{
+}catch(e){
+    console.log(e)
     return res.status(400).send("Something went wrong")
 }
 
