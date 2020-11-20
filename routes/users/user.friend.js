@@ -40,7 +40,11 @@ const {text} = req.body
 
 
 
-var data = await User.find({ name: { $regex: text, $options: "i" } },
+var data = await User.find({ 
+    _id : {$ne: id},
+    name: { $regex: text, $options: "i" } ,
+    
+},
 {
     name : 1
 }
