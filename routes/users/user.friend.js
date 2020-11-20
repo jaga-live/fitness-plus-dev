@@ -9,7 +9,7 @@ const date = require("../../utility/date");
 const User = require("../../models/user");
 const Work = require("../../models/work");
 const FriendReq = require('../../models/friends.req');
-const Friend = require('../../models/friends.req');
+const Friend = require('../../models/friend');
 
 
 
