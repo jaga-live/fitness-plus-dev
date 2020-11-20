@@ -81,7 +81,7 @@ var data = {
     name: user.name,
     avatar : user.avatar,
     private: user.private,
-    activityPoint : private !== true ? user.activityPoint : "Account is Private",
+    activityPoint : user.private !== true ? user.activityPoint : "Account is Private",
     isFriend : friend === 0 ? false : true,
     incoming : incoming === 0 ? false : true ,
     outgoing : outgoing === 0 ? false : true 
