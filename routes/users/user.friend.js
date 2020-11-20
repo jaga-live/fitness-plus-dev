@@ -51,9 +51,45 @@ var data = await User.find({
 }
 )
 
+
+
 return res.send(data)
 
 })
+
+
+/////View single person
+
+router.post('/viewsingleperson',verifyAuth ,async(req,res)=>{
+const {id} = req.userData
+const {friendId} = req.body
+
+var user = await User.findOne({_id : friendId },{
+    name: 1,
+    avatar : 1,
+    private : 1,
+    activityPoint: 1
+})
+
+var data = {
+    name: user.name,
+    avatar : user.avatar,
+    private: user.private,
+    activityPoint : user.activityPoint,
+    
+}
+
+var friend = await Friend.countDocuments({"token":id,"friendId":friendId})
+
+var incoming = await FriendReq.countDocuments({"token":friendId,"friendId":id})
+
+var outgoing = await FriendReq.countDocuments({"token":id,"friendId":friendId})
+
+
+res.send(data)
+
+})
+
 
 
 

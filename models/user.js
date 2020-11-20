@@ -21,6 +21,11 @@ const userSchema = new mongoose.Schema({
     default: null,
   },
 
+  private: {
+    type : Boolean,
+    default : false
+  },
+
   activityPoint: {
     type:Number,
     default : 0
