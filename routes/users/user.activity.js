@@ -49,6 +49,18 @@ router.post("/viewactivity", verifyAuth, async (req, res) => {
 
 
 
+////View Activity Point
+
+router.post('/activitypoint',verifyAuth,async(req,res)=>{
+const {id} = req.userData
+
+var activity = await User.findOne({_id:id},{activityPoint:1})
+
+res.send(activity)
+} )
+
+
+
 
 ////Update activity in home screen
 router.post("/updateactivity", verifyAuth, async (req, res) => {
