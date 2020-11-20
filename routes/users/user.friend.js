@@ -222,7 +222,7 @@ const {id} = req.userData
 
 
 var data = await FriendReq.find({friendId : id, status : "pending"})
-
+var token = []
 data.map((ele,index)=>{
     token.push(data[index].token)
 })
