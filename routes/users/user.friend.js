@@ -34,18 +34,17 @@ res.status(200).send(data)
 
 //////Searching People /////
 
-router.post('/searchpeople',async(req,res)=>{
+router.post('/searchpeople',verifyAuth,async(req,res)=>{
 const {id} = req.userData
 const {text} = req.body
 
-var data = await User.find({
-    $text : {
-        $search: text,
-        $caseSensitive : false,
-        
-    },
-    
-})
+
+
+var data = await User.find({ name: { $regex: text, $options: "i" } },
+{
+    name : 1
+}
+)
 
 return res.send(data)
 
