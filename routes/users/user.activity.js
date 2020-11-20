@@ -8,6 +8,7 @@ const func = require('../../utility/func')
 ///Database Model
 const User = require("../../models/user");
 const Work = require("../../models/work");
+const user = require("../../models/user");
 
 
 
@@ -24,8 +25,16 @@ router.post("/viewactivity", verifyAuth, async (req, res) => {
     date: await date.timestampToDate(time),
   });
 
+  var activity = await User.findOne({_id:id},{activityPoint:1})
 
-  if (work !== null) return res.status(200).send(work);
+
+var temp = {
+  actiivityPoint : activity.activityPoint,
+  workouts: work.workouts
+}
+
+
+  if (work !== null) return res.status(200).send(temp);
 
 
 
@@ -35,6 +44,7 @@ router.post("/viewactivity", verifyAuth, async (req, res) => {
   var data = {
     userId: id,
     workouts: workType.workoutType,
+    activityPoint : activity.actiivityPoint,
     time: time,
     date: date.timestampToDate(time)
   };
