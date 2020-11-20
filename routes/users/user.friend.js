@@ -132,8 +132,10 @@ try {
 
 //////Accept friend request///
 router.post('/acceptrequest',verifyAuth, async(req,res)=>{
-const {id,name} = req.userData
+const {id} = req.userData
 const {friendId} = req.body
+
+var user = await User.findOne({_id:id},{name:1})
 
 try{
 
@@ -143,7 +145,7 @@ await FriendReq.updateOne({token:friendId,friendId: id, status:"pending"},{
 })
 
 
-//new collections for friens
+//new collections for friends
 var friendName = await User.findOne({_id:friendId},{name:1})
 var data = []
 
@@ -156,7 +158,7 @@ data.push({
 data.push({
     token: friendId,
     friendId: id,
-    friendName: name
+    friendName: user.name
 })
 
 await Friend.insertMany(data)
