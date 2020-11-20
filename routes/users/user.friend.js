@@ -182,6 +182,7 @@ return res.status(200).send('Updated')
 
 router.post('/rejectrequest', verifyAuth,async(req,res)=>{
 const {id}= req.userData
+const {friendId} = req.body
 
 await FriendReq.updateOne({token : friendId, friendId : id, status:"pending"},{
     status : "rejected"
