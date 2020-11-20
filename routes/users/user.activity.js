@@ -29,7 +29,7 @@ router.post("/viewactivity", verifyAuth, async (req, res) => {
 
 
 var temp = {
-  actiivityPoint : activity.activityPoint,
+  activityPoint : activity.activityPoint,
   workouts: work.workouts
 }
 
@@ -44,7 +44,7 @@ var temp = {
   var data = {
     userId: id,
     workouts: workType.workoutType,
-    activityPoint : activity.actiivityPoint,
+    activityPoint : activity.activityPoint,
     time: time,
     date: date.timestampToDate(time)
   };
