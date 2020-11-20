@@ -97,7 +97,7 @@ res.send(data)
 
 ////Send a request to a Person
 
-router.post('/sendrequest',async(req,res)=>{
+router.post('/sendrequest',verifyAuth,async(req,res)=>{
 const {id} = req.userData
 const {friendId} = req.body
 
@@ -131,7 +131,7 @@ try {
 
 
 //////Accept friend request///
-router.post('/acceptrequest', async(req,res)=>{
+router.post('/acceptrequest',verifyAuth, async(req,res)=>{
 const {id,name} = req.userData
 const {friendId} = req.body
 
@@ -177,7 +177,7 @@ return res.status(200).send('Updated')
 
 //Reject Friend Request
 
-router.post('/rejectrequest',async(req,res)=>{
+router.post('/rejectrequest', verifyAuth,async(req,res)=>{
 const {id}= req.userData
 
 await FriendReq.updateOne({token : friendId, friendId : id, status:"pending"},{
