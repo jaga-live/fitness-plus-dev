@@ -15,7 +15,6 @@ const Friend = require('../../models/friends.req');
 
 
 
-
 ////view all friends
 
 router.post('/myfriends',async(req,res)=>{
@@ -71,13 +70,6 @@ var user = await User.findOne({_id : friendId },{
     activityPoint: 1
 })
 
-var data = {
-    name: user.name,
-    avatar : user.avatar,
-    private: user.private,
-    activityPoint : user.activityPoint,
-    
-}
 
 var friend = await Friend.countDocuments({"token":id,"friendId":friendId})
 
@@ -85,6 +77,15 @@ var incoming = await FriendReq.countDocuments({"token":friendId,"friendId":id})
 
 var outgoing = await FriendReq.countDocuments({"token":id,"friendId":friendId})
 
+var data = {
+    name: user.name,
+    avatar : user.avatar,
+    private: user.private,
+    activityPoint : private !== true ? user.activityPoint : "Account is Private",
+    isFriend : friend === 0 ? false : true,
+    incoming : incoming === 0 ? false : true ,
+    outgoing : outgoing === 0 ? false : true 
+}
 
 res.send(data)
 

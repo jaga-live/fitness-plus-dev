@@ -63,7 +63,7 @@ router.post('/signup/user', async (req, res) => {
 router.post('/userprofile', verifyAuth,async(req,res)=>{
 const {id} = req.userData
 
-const user = await User.findOne({_id:id},{name:1,avatar:1,email:1})
+const user = await User.findOne({_id:id},{name:1,avatar:1,email:1,private:1})
 return res.status(200).send(user)
 
 })

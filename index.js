@@ -45,6 +45,17 @@ const adminRoute = require('./routes/admin/admin.challenges')
 app.use([adminRoute])
 
 
+
+
+///Hello World
+
+app.get('/',(req,res)=>{
+
+    res.send("Fitness Plus - ©️2020")
+
+})
+
+
 ////Starting Node Js Server
 const port = process.env.PORT
 
