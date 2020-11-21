@@ -10,6 +10,10 @@ friendId : String,
 
 friendMail: String,
 
+date: String,
+
+time : String,
+
 status : {
     type : String,
     default : "pending"
