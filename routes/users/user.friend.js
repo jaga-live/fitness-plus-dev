@@ -112,7 +112,7 @@ res.send(data)
 
 router.post('/sendrequest',verifyAuth,async(req,res)=>{
 const {id} = req.userData
-const {friendId,time,date} = req.body
+const {friendId,time} = req.body
 
 try {
     var name = await User.findOne({_id:id},{name:1})
