@@ -115,7 +115,7 @@ const {id} = req.userData
 const {friendId,time,date} = req.body
 
 try {
-
+    var name = await User.findOne({_id:id},{name:1})
     var user = await User.findOne({_id:friendId},{name:1,email:1})
 
     var data = {
@@ -133,7 +133,8 @@ try {
         token : friendId,
         friendId: id,
         time : time,
-        date : date
+        date : date,
+        message : `${name.name} sent you a friend request!`
     })
 
     return res.send('updated')

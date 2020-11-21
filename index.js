@@ -33,8 +33,8 @@ const userActivity = require('./routes/users/user.activity')
 const userFriend = require('./routes/users/user.friend')
 const userChallenge = require('./routes/users/user.challenge')
 const userLeader = require("./routes/users/user.leaderboard")
-
-app.use([userRegister,userActivity,userFriend,userChallenge,userLeader])
+const userNotify = require('./routes/users/user.notification')
+app.use([userRegister,userActivity,userFriend,userChallenge,userLeader,userNotify])
 
 
 

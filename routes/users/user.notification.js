@@ -28,5 +28,30 @@ res.send(notify)
 })
 
 
+///View all past notifications
+
+router.post('/notifications', verifyAuth,async(req,res)=>{
+const {id} = req.userData
+
+
+var notification = await Notify.find({
+    token : id,
+    date : req.body.date
+})
+
+res.status(200).send(notification)
+
+await Notify.updateMany({
+    token : id,
+    date : req.body.date
+},{
+    notify : false
+})
+
+
+
+})
+
+
 
 module.exports = router

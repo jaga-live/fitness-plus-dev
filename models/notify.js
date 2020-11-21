@@ -16,6 +16,8 @@ alert:{
     default :true
 },
 
+message: String,
+
 date:{
     type:String
 },
