@@ -20,7 +20,7 @@ const {id} = req.userData
 
 var friends = await Friend.find({token:id})
 var token = []
-
+token.push(id)
 
 friends.map((ele,index)=>{
 token.push(friends[index].friendId)
