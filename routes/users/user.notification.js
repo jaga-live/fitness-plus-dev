@@ -23,7 +23,9 @@ var notify = await Notify.countDocuments({
 
 })
 
-res.send(notify)
+
+
+res.send({status:notify})
 
 })
 
