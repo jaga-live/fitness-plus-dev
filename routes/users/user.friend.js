@@ -10,7 +10,7 @@ const User = require("../../models/user");
 const Work = require("../../models/work");
 const FriendReq = require('../../models/friends.req');
 const Friend = require('../../models/friend');
-
+const Notify = require("../../models/notify")
 
 
 
@@ -112,7 +112,7 @@ res.send(data)
 
 router.post('/sendrequest',verifyAuth,async(req,res)=>{
 const {id} = req.userData
-const {friendId} = req.body
+const {friendId,time,date} = req.body
 
 try {
 
@@ -128,6 +128,13 @@ try {
 
     var saveData = await FriendReq(data)
     await saveData.save()
+
+    await Notify.insertMany({
+        token : friendId,
+        friendId: id,
+        time : time,
+        date : date
+    })
 
     return res.send('updated')
 
