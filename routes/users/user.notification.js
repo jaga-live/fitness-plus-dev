@@ -44,7 +44,7 @@ const {id} = req.userData
 var notification = await Notify.find({
     token : id,
     date : req.body.date
-})
+}).sort({_id: -1})
 
 res.status(200).send(notification)
 
