@@ -28,7 +28,9 @@ token.push(friends[index].friendId)
 
 var user = await User.find({_id:token},{
     name: 1,
-    avatar : 1
+    avatar : 1,
+    activityPoint : -1
+
 })
 
 res.send(user)
