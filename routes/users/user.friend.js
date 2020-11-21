@@ -22,7 +22,20 @@ const {id} = req.userData
 
 var data = await Friend.find({'token':id})
 
-res.status(200).send(data)
+var token = []
+
+data.map((ele,index)=>{
+
+    token.push(data[index].friendId)
+
+})
+
+var user = await User.find({_id : token},{
+    name: 1,
+    avatar : 1
+})
+
+res.status(200).send(user)
 
 })
 
