@@ -6,6 +6,8 @@ token : String,
 
 friendId : String,
 
+type : String,
+
 notify : {
     type:Boolean,
     default : true

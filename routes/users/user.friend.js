@@ -132,6 +132,7 @@ try {
     await Notify.insertMany({
         token : friendId,
         friendId: id,
+        type : "friend",
         time : time,
         date : req.body.date,
         message : `${name.name} sent you a friend request!`
