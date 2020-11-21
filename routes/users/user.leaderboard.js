@@ -9,7 +9,7 @@ const date = require("../../utility/date");
 const User = require("../../models/user");
 const Work = require("../../models/work");
 const FriendReq = require('../../models/friends.req');
-const Friend = require('../../models/friends.req');
+const Friend = require('../../models/friend');
 
 
 /////View leaderboard///
@@ -29,9 +29,9 @@ token.push(friends[index].friendId)
 var user = await User.find({_id:token},{
     name: 1,
     avatar : 1,
-    activityPoint : -1
+    activityPoint : 1
 
-})
+}).sort({activityPoint : -1})
 
 res.send(user)
 

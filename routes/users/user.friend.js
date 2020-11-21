@@ -17,7 +17,7 @@ const Friend = require('../../models/friend');
 
 ////view all friends
 
-router.post('/myfriends',async(req,res)=>{
+router.post('/myfriends',verifyAuth,async(req,res)=>{
 const {id} = req.userData
 
 var data = await Friend.find({'token':id})
