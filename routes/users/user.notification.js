@@ -19,13 +19,18 @@ const {id} = req.userData
 
 var notify = await Notify.countDocuments({
     token: id,
-    notify : true
+    alert : true
 
 })
 
-
+if(notify !==0 ){
+    await Notify.updateMany({token: id},{
+        alert : false
+    })
+}
 
 res.send({status:notify})
+
 
 })
 
