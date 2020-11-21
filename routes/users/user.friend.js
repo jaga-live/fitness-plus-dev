@@ -133,7 +133,7 @@ try {
         token : friendId,
         friendId: id,
         time : time,
-        date : date,
+        date : req.body.date,
         message : `${name.name} sent you a friend request!`
     })
 
