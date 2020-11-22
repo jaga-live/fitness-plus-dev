@@ -19,6 +19,7 @@ var verifyAuth = require('../../auth/verify.auth')
 router.post('/signup/user', async (req, res) => {
 
     try {
+
         const user = await User.countDocuments({ 'email': req.body.email })
         if (user !== 0) return res.status(409).send('Email Already Exists')
 

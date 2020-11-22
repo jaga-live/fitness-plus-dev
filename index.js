@@ -51,7 +51,7 @@ app.use([adminRoute])
 
 app.get('/',(req,res)=>{
 
-    res.send("Fitness Plus - ©️2020")
+    res.send("Fitness Plus - 2020.  ©️Powered By Jaga :)")
 
 })
 
