@@ -185,6 +185,15 @@ data.push({
 
 await Friend.insertMany(data)
 
+await Notify.insertMany({
+    token : friendId,
+    friendId: id,
+    type : "friend",
+    time : time,
+    date : req.body.date,
+    message : `${friendName} accepted your friend request!`
+})
+
 return res.status(200).send('Updated')
 
 }catch(e){
