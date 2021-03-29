@@ -26,7 +26,7 @@ var activity = await Work.findOne({userId:id,date : req.body.date})
 
 
 var workouts = activity !== null ? activity.workouts : []
-
+console.log(workouts)
 
 for (let index = 0; index < challenge.length; index++) {
    

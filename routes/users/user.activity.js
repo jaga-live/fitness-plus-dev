@@ -56,7 +56,7 @@ var temp = {
 });
 
 
-
+console.log(date.timestampToDate(Date.now()))
 
 
 ////View Activity Point
